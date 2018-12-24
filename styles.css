@@ -1,0 +1,121 @@
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Righteous', cursive;
+font-family: 'Architects Daughter', cursive; */
+:root {
+  --main-color: #9df5d9;
+  --second-color: #474bba;
+}
+
+html, body {
+  margin, padding: 0;
+}
+
+body {
+  background-color: var(--main-color);
+}
+
+#mainContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Raleway', sans-serif;
+}
+
+.nav {
+  background-image: linear-gradient(var(--second-color), #406bc7);
+  border-bottom: white 2px solid;
+}
+
+#title {
+  font-family: 'Righteous', cursive;
+  /* font-style: italic; */
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  padding: 50px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: var(--main-color);
+}
+
+.instructions {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+}
+
+#inputClasses {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#generate {
+  text-align: center;
+  margin: 20px;
+}
+
+.btn-link:focus {
+  text-decoration: none;
+}
+
+ .btn-link:hover {
+   text-decoration: none;
+ }
+
+ .form-check-label {
+   margin-right: 40px;
+ }
+
+.colorBtn {
+  background-color: var(--second-color);
+  color: white;
+}
+
+.alert {
+  margin-top: 10px;
+}
+
+.currClassesList {
+  margin-bottom: 20px;
+}
+
+#srrListing {
+  /* border-radius: 20px; */
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+}
+
+.weekdayHeader {
+  background-color: var(--second-color);
+  border-top: white solid 2px;
+  border-bottom: white solid 2px;
+  border-left: white solid 1px;
+  border-right: white solid 1px;
+}
+
+.toReview {
+  border-top: white solid 1px;
+  border-bottom: white solid 1px;
+  border-left: white solid 1px;
+  border-right: white solid 1px;
+}
+
+.toReview1 {
+  background-color: #35b3e4;
+}
+
+.toReview3 {
+  background-color: #218f5f;
+}
+
+.toReview6 {
+  background-color: #ab0000;
+}
