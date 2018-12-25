@@ -119,3 +119,7 @@ body {
 .toReview6 {
   background-color: #ab0000;
 }
+
+.removeFromList:hover {
+  cursor: pointer;
+}

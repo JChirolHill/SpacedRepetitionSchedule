@@ -18,7 +18,7 @@ $(document).ready(function() {
           dayHTML += '</button>';
         dayHTML += '</h5>';
       dayHTML += '</div>';
-      dayHTML += '<div id="collapse' + nums[dayIndex] + '" class="collapse" aria-labelledby="' + dayName + '" data-parent="#inputClasses">';
+      dayHTML += '<div id="collapse' + nums[dayIndex] + '" class="collapse" aria-labelledby="' + dayName.toLowerCase() + '" data-parent="#inputClasses">';
         dayHTML += '<div class="card-body">';
           dayHTML += '<div class="currClassesList" id="' + dayName.toLowerCase() + 'CurrClassesList">Classes for ' + dayName + ':';
             dayHTML += '<ul class="list-group list-group-flush" id="' + dayName.toLowerCase() + 'CurrClasses"></ul>';
@@ -51,7 +51,9 @@ $(document).ready(function() {
   })
 
   // cleaning up
-  // $().setAttribute("aria-expanded", "true");
+  $('[data-target="#collapseOne"]').attr("aria-expanded", "true");
+  $('[data-target="#collapseOne"]').removeClass("collapsed");
+  $("#collapseOne").addClass("show");
   $(".alert").hide();
   $(".currClassesList").hide();
 
@@ -59,24 +61,70 @@ $(document).ready(function() {
   $(".addToScheduleBtn").on("click", function() {
     var currDay = $(this).data("day");
     var className = $("#" + currDay + "ClassName").val();
+    if(className == "") {
+      alert("Please enter a valid class name.");
+    }
+    else {
+      // add to this day
+      $("#" + currDay + "CurrClasses").append('<li class="list-group-item ' + currDay + 'Class listedClass">' + className + '</li>');
+      $("#" + currDay + "CurrClassesList").show();
 
-    // add to this day
-    $("#" + currDay + "CurrClasses").append('<li class="list-group-item ' + currDay + 'Class">' + className + '</li>');
-    $("#" + currDay + "CurrClassesList").show();
+      // add to other days
+      $("." + currDay + "AddToScheduleCheckbox:checked").each(function() {
+        var dayAddTo = $(this).data("day");
+        $("#" + dayAddTo + "CurrClasses").append('<li class="list-group-item ' + dayAddTo + 'Class listedClass">' + className + '</li>');
+        $("#" + dayAddTo + "CurrClassesList").show();
+      })
 
-    // add to other days
-    $("." + currDay + "AddToScheduleCheckbox:checked").each(function() {
-      var dayAddTo = $(this).data("day");
-      $("#" + dayAddTo + "CurrClasses").append('<li class="list-group-item ' + dayAddTo + 'Class">' + className + '</li>');
-      $("#" + dayAddTo + "CurrClassesList").show();
+      $("#" + currDay + "ClassName").val("");
+      $("#" + currDay + "successAddedMsg").html("Successfully added the class \"" + className + "\" to the days selected.");
+      $("#" + currDay + "successAddedMsg").show();
+      // $("#" + currDay + "successAddedMsg").fadeIn();
+      setTimeout(function() {
+      $("#" + currDay + "successAddedMsg").hide();
+        // $("#" + currDay + "successAddedMsg").fadeOut();
+      }, 3000);
+
+      oneClass = true;
+    }
+  });
+
+  // when click on a class to modify the name
+  $(".list-group").on("click", ".listedClass", function () {
+    var className = $(this).html();
+    var $this = $(this);
+    $this.html('');
+    $this.removeClass("listedClass");
+    $(".changeName").removeClass("changeName");
+    var modifyNameHTML = '';
+    modifyNameHTML += '<div class="input-group flex-nowrap">';
+      modifyNameHTML += '<div class="input-group-prepend">';
+        modifyNameHTML += '<span class="input-group-text removeFromList" id="addon-wrapping">X</span>';
+      modifyNameHTML += '</div>';
+      modifyNameHTML += '<input type="text" class="form-control changeName" value="' + className + '" aria-label="Username" aria-describedby="addon-wrapping">';
+    modifyNameHTML += '</div>';
+    $this.append(modifyNameHTML);
+
+    $(".changeName").keypress(function(e) {
+      if(e.which == 13) {
+          var newName = $(this).val();
+          $this.html(newName);
+          $(".changeName").remove();
+          $this.addClass("listedClass");
+      }
     })
 
-    $("#" + currDay + "ClassName").val("");
-    $("#" + currDay + "successAddedMsg").html("Successfully added the class \"" + className + "\" to the days selected.");
-    $("#" + currDay + "successAddedMsg").show();
+    $(".removeFromList").on("click", function() {
+      $this.remove();
+    })
+  })
 
-    oneClass = true;
-  });
+  //  <div class="input-group flex-nowrap">
+  //   <div class="input-group-prepend">
+  //     <span class="input-group-text" id="addon-wrapping">X</span>
+  //   </div>
+  //   <input type="text" class="form-control" value="" aria-label="Username" aria-describedby="addon-wrapping">
+  // </div>
 
   // algorithm to generate the table
   $("#generateSRRBtn").on("click", function() {
