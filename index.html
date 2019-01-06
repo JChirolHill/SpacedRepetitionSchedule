@@ -11,16 +11,13 @@
   <body>
       <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Create</a>
+          <a class="nav-link active" href="#science">Science</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="science.html">Science</a>
+          <a class="nav-link" href="#examples">Examples</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="examples.html">Examples</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="guide.html">Quick Guide</a>
+          <a class="nav-link" href="#guide">Quick Guide</a>
         </li>
       </ul>
 
@@ -32,7 +29,7 @@
           <p>Start by entering which classes you have on which days.<br/>
             Then press the Generate button below.</p>
         </div>
-        <div class="accordion" id="inputClasses"></div>
+        <div class="accordion section"></div>
         <div id="generate">
           <button type="submit" id="generateSRRBtn" class="btn colorBtn">Generate Schedule</button>
         </div>
@@ -49,6 +46,52 @@
         </div>
         <div id="srrListing">
           <div id="weekdays" class="row"></div>
+        </div>
+      </div>
+
+      <div id="guide" class="section">
+        <div class="header">Guide</div>
+        <div class="card">
+          <div class="card-body">
+            <div class="card embeddedImg" style="width: 30rem; float: left;">
+              <img src="Guide_AddClass.png" class="card-img-top" alt="Adding a Class">
+            </div>
+            <p class="card-text">Start by inputting all your classes day by day according to the day on which you have each class.  When you click “Add to Schedule”, the class will be displayed for that day as well as give you a success message if your class was properly added.</p>
+            <p class="card-text">Once you are done inputting all your classes for each day, click “Generate Schedule” at the bottom and the page will display your personalized spaced repetition schedule.  </p>
+            <div class="clear"></div><hr/>
+            <h5 class="card-title">Understanding the Generated Schedule</h5>
+            <p class="card-text">For each class on each day, you will find three instances of it on the table: one blue, one green, and one red.  (See <a href="#science">Science</a> to understand their significance.)  </p>
+            <p class="card-text">Each day during the semester, you will look at this schedule and see the current day and all classes listed to be reviewed for that day.  Based on the color of the cell, you review the set of notes from the class that was 1 day ago (blue), 3 days ago (green), or 6 days ago (red).  </p>
+            <p class="card-text">See <a href="#examples">Examples</a> for a detailed explanation of how to know what to review on any particular day.
+            <p class="card-text">You are encouraged to take a screenshot of the generated schedule to easily have access to which classes you need to review each day.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="examples" class="section">
+        <div class="header">Examples</div>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">Here are some sample generated schedules.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="science" class="section">
+        <div class="header">Science</div>
+        <div class="card">
+          <div class="card-body">
+            <div class="card embeddedImg" style="width: 18rem; float: left;">
+              <img src="ForgettingCurve.jpg" class="card-img-top" alt="Forgetting Curve with Spaced Repetition">
+              <div class="card-body">
+                <p class="card-text text-muted" style="font-size: 10px;">Image curtesy of www.cqeacademy.com</p>
+              </div>
+            </div>
+            <p class="card-text">Spaced repetition is based on the principle that you remember content better when you review it.  However, the question becomes, how often should I review the content to maximize how much I remember, but minimize the amount of times I have to review the content?  </p>
+            <p class="card-text">This is where spaced repetition comes in.  Each time you review the information, the forgetting curve gets less and less steep, meaning you will remember the information longer.  The idea is to let your brain forget about 80% of the content before reviewing it again, setting these reviewing periods to be 1 day, 3 days, and 6 days after you learned the material.</p>
+            <p class="card-text">This website generates your personalized spaced repetition schedule based on the days you have each class so that you can best remember the content and not waste precious time trying to relearn everything during finals or reviewing much more than is necessary.</p>
+            <div class="clear"></div>
+          </div>
         </div>
       </div>
     </div>

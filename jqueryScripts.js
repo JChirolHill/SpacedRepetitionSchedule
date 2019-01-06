@@ -64,6 +64,9 @@ $(document).ready(function() {
     if(className == "") {
       alert("Please enter a valid class name.");
     }
+    else if(className.length > 9) {
+      alert("Please enter a class name shorter than 9 characters.");
+    }
     else {
       // add to this day
       $("#" + currDay + "CurrClasses").append('<li class="list-group-item ' + currDay + 'Class listedClass">' + className + '</li>');
@@ -105,10 +108,15 @@ $(document).ready(function() {
 
     $(".changeName").keypress(function(e) {
       if(e.which == 13) {
-          var newName = $(this).val();
+        var newName = $(this).val();
+        if(newName.length > 9) {
+          alert("Please enter a class name shorter than 9 characters.");
+        }
+        else {
           $this.html(newName);
           $(".changeName").remove();
           $this.addClass("listedClass");
+        }
       }
     })
 
@@ -128,7 +136,10 @@ $(document).ready(function() {
   $("#generateSRRBtn").on("click", function() {
     // alert if no classes entered
     if(!oneClass) {
-      alert("Please enter at least one class before generating the schedule.")
+      alert("Please enter at least one class before generating the schedule.");
+    }
+    else if($(".changeName").length > 0) {
+      alert("Make sure that if you edited the name of any class, you press enter.");
     }
     else {
       // find how many rows to add
