@@ -57,10 +57,10 @@ $(document).ready(function() {
   $(".alert").hide();
   $(".currClassesList").hide();
 
-  // add to other days when click to add for a specific day
+  // add to this and other days when click to add for a specific day
   $(".addToScheduleBtn").on("click", function() {
     var currDay = $(this).data("day");
-    var className = $("#" + currDay + "ClassName").val();
+    var className = $("#" + currDay + "ClassName").val().trim();
     if(className == "") {
       alert("Please enter a valid class name.");
     }
@@ -78,11 +78,9 @@ $(document).ready(function() {
 
       $("#" + currDay + "ClassName").val("");
       $("#" + currDay + "successAddedMsg").html("Successfully added the class \"" + className + "\" to the days selected.");
-      $("#" + currDay + "successAddedMsg").show();
-      // $("#" + currDay + "successAddedMsg").fadeIn();
+      $("#" + currDay + "successAddedMsg").fadeIn();
       setTimeout(function() {
-      $("#" + currDay + "successAddedMsg").hide();
-        // $("#" + currDay + "successAddedMsg").fadeOut();
+        $("#" + currDay + "successAddedMsg").fadeOut();
       }, 3000);
 
       oneClass = true;

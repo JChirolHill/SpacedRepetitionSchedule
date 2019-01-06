@@ -2,9 +2,14 @@
 font-family: 'Raleway', sans-serif;
 font-family: 'Righteous', cursive;
 font-family: 'Architects Daughter', cursive; */
+/* #9df5d9; #474bba #406bc7*/
+
+/* good color scheme: E0E0E2 (platinum), 81D2C7 (pearl aqua), B5BAD0 (pastel blue), 7389AE (shadow blue), 416788 (queen blue) */
 :root {
-  --main-color: #9df5d9;
-  --second-color: #474bba;
+  --main-color: #81D2C7;
+  --second-color: #416788;
+  --third-color: #7389AE;
+  --fourth-color: #E0E0E2;
 }
 
 html, body {
@@ -23,7 +28,7 @@ body {
 }
 
 .nav {
-  background-image: linear-gradient(var(--second-color), #406bc7);
+  background-image: linear-gradient(var(--second-color), var(--third-color));
   border-bottom: white 2px solid;
 }
 
@@ -61,12 +66,17 @@ body {
   margin: 20px;
 }
 
+.btn-link {
+  color: var(--second-color);
+}
+
 .btn-link:focus {
   text-decoration: none;
 }
 
  .btn-link:hover {
    text-decoration: none;
+   color: var(--main-color);
  }
 
  .form-check-label {
