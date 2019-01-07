@@ -79,6 +79,10 @@ body {
   margin: 20px;
 }
 
+.card-body {
+  padding: 0.5rem;
+}
+
 .btn-link {
   color: var(--second-color);
 }
