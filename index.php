@@ -9,19 +9,20 @@
     <title>Spaced Repetition Schedule Generator</title>
   </head>
   <body>
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" href="#science">Science</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#examples">Examples</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#guide">Quick Guide</a>
-        </li>
-      </ul>
+    <!-- navbar -->
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="#science">Science</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#examples">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#guide">Quick Guide</a>
+      </li>
+    </ul>
 
-    <div id="mainContainer">
+    <div id="mainContainer" class="container">
       <div id="title">Spaced Repetition Schedule Generator</div>
       <!-- enter all the classes by day -->
       <div id="step1">
@@ -48,7 +49,56 @@
           <div id="weekdays" class="row"></div>
         </div>
         <div id="email">
-            <button id="emailListBtn" type="button" class="btn colorBtn">Click to receive reminder emails</button>
+            <button id="emailListBtn" type="button" class="btn colorBtn" data-toggle="modal" data-target="#emailModal">Want to receive reminder emails?</button>
+        </div>
+      </div>
+
+      <!-- enter email modal -->
+      <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="emailModal">Email Reminders</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="" action="backend.php" method="post">
+                <form>
+                  <div class="form-group">
+                    <label for="emailField">Email</label>
+                    <input type="email" class="form-control" id="emailField" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="frequencyField">How often do you want to receive reminders?</label>
+                    <div class="form-check">
+                      <input class="form-check-input" name="frequencyField" type="radio" id="frequency1" checked>
+                      <label class="form-check-label" for="frequency1">
+                        Daily
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="frequencyField" type="radio" id="frequency2">
+                      <label class="form-check-label" for="frequency2">
+                        Biweekly
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" name="frequencyField" type="radio" id="frequency3">
+                      <label class="form-check-label" for="frequency3">
+                        Weekly
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
         </div>
       </div>
 

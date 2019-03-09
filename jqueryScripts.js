@@ -28,11 +28,13 @@ $(document).ready(function() {
             dayHTML += '<input type="text" class="form-control" id="' + dayName.toLowerCase() + 'ClassName" placeholder="Enter class name">';
           dayHTML += '</div>';
           dayHTML += '<label for"rememberCheckboxes">(Optional) Also add this class to:</label>';
-          dayHTML += '<div class="rememberCheckboxes form-group form-check">';
+          dayHTML += '<div class="rememberCheckboxes form-group form-check checkParent">';
             for(i=0; i<days.length; i++) {
               if(dayName != days[i]) {
-                dayHTML += '<input type="checkbox" class="form-check-input ' + dayName.toLowerCase() + 'AddToScheduleCheckbox" id="rememberCheck' + dayIndex + i + '" data-day="' + days[i].toLowerCase() + '"/>';
-                dayHTML += '<label class="form-check-label" for="rememberCheck' + dayIndex + i + '">' + days[i] + '</label>';
+                dayHTML += '<div>'
+                  dayHTML += '<input type="checkbox" class="form-check-input ' + dayName.toLowerCase() + 'AddToScheduleCheckbox" id="rememberCheck' + dayIndex + i + '" data-day="' + days[i].toLowerCase() + '"/>';
+                  dayHTML += '<label class="form-check-label" for="rememberCheck' + dayIndex + i + '">' + days[i] + '</label>';
+                dayHTML += '</div>'
               }
             }
           dayHTML += '</div>';
@@ -185,4 +187,9 @@ $(document).ready(function() {
       $("#step2").show();
     }
   })
+
+  // display form
+  $('#emailListBtn').on('click', function() {
+
+  });
 })
